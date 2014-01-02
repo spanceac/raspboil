@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( imageproc )
+find_package( OpenCV REQUIRED )
+add_executable( imageproc imageproc.cpp )
+target_link_libraries( imageproc ${OpenCV_LIBS} )
