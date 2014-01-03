@@ -13,6 +13,7 @@ time_t start_timestamp;
 
 void start_boiler(void)
 {
+	printf("Boiler starting \n");
 	BOILER_START; //switch relay on
 	LIGHTS_ON; //turn on the lights
 	start_timestamp = time(NULL);
@@ -21,6 +22,7 @@ void start_boiler(void)
 }
 void stop_boiler(void)
 {
+	printf("Boiler stopping \n");
 	BOILER_STOP;
 	LIGHTS_OFF;
 	boiler_started = 0;
@@ -37,7 +39,6 @@ void check_for_state_time(void)
 	if (todo == '0')
 	{
 		action = 0;
-		printf("Nada \n");
 	}
 	else if (todo == '1')
 	{
@@ -45,12 +46,10 @@ void check_for_state_time(void)
 		fd = fopen("/dev/shm/state","w");
 		fputs("",fd);
 		fclose(fd);
-		printf("We should start now\n");
 	}
 	else if (todo == '2')
 	{
 		action = 2;
-		printf("Stop now\n");
 	}
 	return;
 }
@@ -85,7 +84,7 @@ void check_time_overflows(void)
 	it is clear that there is a problem  so we should stop*/
 	time_t current_time;
 	current_time = time(NULL);
-	if((current_time - start_timestamp) >= 5400)
+	if((current_time - start_timestamp) >= 5400) //5400 seconds
 	{
 		printf("!!!! Time overflow, STOP boiler\n");
 		stop_boiler();
@@ -147,5 +146,6 @@ int main(void)
 		}
 		clear_shm();
 		sleep(10);
+		fflush(stdout);
 	}
 }
