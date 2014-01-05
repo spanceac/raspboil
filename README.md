@@ -5,6 +5,7 @@ Raspboil is a project that uses a Raspberry Pi for a water boiler control via e-
 The project uses the wiringPi library and openCV.
 The instructions assume that you already have Raspbian installed on your card.
 You will also need to create an e-mail address at gmail for your Raspberry Pi.
+Project page: http://hackingbeaver.com/?p=97
 
 To install  wiringPi:
 http://wiringpi.com/download-and-install/
