@@ -43,9 +43,6 @@ void check_for_state_time(void)
 	else if (todo == '1')
 	{
 		action = 1;
-		fd = fopen("/dev/shm/state","w");
-		fputs("",fd);
-		fclose(fd);
 	}
 	else if (todo == '2')
 	{
@@ -68,9 +65,6 @@ void check_boiler_indicator(void)
 void clear_shm(void)
 {
 	FILE *fd;
-//	fd = fopen("/dev/shm/state","w");
-//	fputs("",fd);
-//	fclose(fd);
 	fd = fopen("/dev/shm/now","w");
 	fputs("",fd);
 	fclose(fd);

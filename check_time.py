@@ -13,6 +13,7 @@ f2 = open('/dev/shm/now','w')
 
 if (line == 'start now'):
 	# start now notified by mail.py
+	clear_state(0)
 	f2.write('1')
 elif (line == 'stop'):
 	clear_state(0)
